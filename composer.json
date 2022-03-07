@@ -1,18 +1,19 @@
 {
-  "name": "sosat1101/open-subtitles",
-  "description": "Login, Search, Download with buffer",
-  "authors": [
-    {
-      "name": "sosat1101"
+    "name": "sosat1101/opensubtitles",
+    "description": "Login, search, Download with buffer",
+    "type": "metapackage",
+    "autoload": {
+        "psr-4": {
+            "Sosat1101\\Opensubtitles\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sosat1101",
+            "email": "air911.q@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*"
     }
-  ],
-  "license": "Apache-2.0",
-  "require": {
-    "php": ">=8.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "sosat1101\\openSubtitles\\": "src/"
-    }
-  }
 }

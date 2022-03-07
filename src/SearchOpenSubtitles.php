@@ -1,5 +1,7 @@
 <?php
-include_once "OpenSubtitles.abstract.php";
+
+namespace sosat1101\openSubtitles;
+
 class SearchOpenSubtitles extends OpenSubtitles
 {
     const URL = 'https://api.opensubtitles.com/api/v1/subtitles';

@@ -1,5 +1,7 @@
 <?php
 
+namespace sosat1101\openSubtitles;
+
 abstract class OpenSubtitles
 {
     protected mixed $ch;
@@ -14,7 +16,7 @@ abstract class OpenSubtitles
             return 'Curl error: ' . curl_error($this->ch);
         }
         if (200 !== curl_getinfo($this->ch, CURLINFO_HTTP_CODE)) {
-            return 'Response ERROR: httpCode:' . curl_getinfo($this->ch, CURLINFO_HTTP_CODE)."Curl Info:".curl_getinfo($this->ch);
+            return 'Response ERROR: httpCode:' . curl_getinfo($this->ch, CURLINFO_HTTP_CODE) . "Curl Info:" . curl_getinfo($this->ch);
         }
         curl_close($this->ch);
         return $this->toArray($result);

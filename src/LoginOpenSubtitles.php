@@ -1,5 +1,7 @@
 <?php
-include_once "OpenSubtitles.abstract.php";
+
+namespace sosat1101\openSubtitles;
+
 class LoginOpenSubtitles extends OpenSubtitles
 {
     private string $username;

@@ -1,8 +1,8 @@
 <?php
 
-include_once "Subtitles.php";
-include_once "SearchOpenSubtitles.php";
-include_once "DownloadOpenSubtitles.php";
+namespace sosat1101\openSubtitles;
+
+use Exception;
 
 class OpenSubtitlesImp implements Subtitles
 {

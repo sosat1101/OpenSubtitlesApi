@@ -1,5 +1,6 @@
 <?php
-include_once "OpenSubtitles.abstract.php";
+
+namespace sosat1101\openSubtitles;
 
 class DownloadOpenSubtitles extends OpenSubtitles
 {
