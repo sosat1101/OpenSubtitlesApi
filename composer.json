@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Sosat1101\\Opensubtitles\\": "src/"
+            "sosat1101\\opensubtitles\\": "src/"
         }
     },
     "authors": [
