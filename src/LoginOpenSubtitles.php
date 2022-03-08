@@ -7,7 +7,7 @@ class LoginOpenSubtitles extends OpenSubtitles
     private string $username;
     private string $password;
     const URL = 'https://api.opensubtitles.com/api/v1/login';
-    public array $loginResult;
+    public array|string $loginResult;
 
     public function __construct(string $username, string $password)
     {
@@ -30,15 +30,22 @@ class LoginOpenSubtitles extends OpenSubtitles
         curl_setopt($this->ch, CURLOPT_HTTPHEADER, $httpHeader);
     }
 
-    public function getResult()
+    public function getResult(): array|string
     {
-        $this->loginResult = $this->getResponse();
+        try {
+            $this->loginResult = $this->getResponse();
+        } catch (Exception $e) {
+            $this->loginResult = $e->getMessage();
+            return $this->loginResult;
+        }
         return $this->loginResult;
     }
 
     public function getAccessToken()
     {
         // access_token需要存入缓存
-        return $this->loginResult['token'];
+        if (is_array($this->loginResult)) {
+            return $this->loginResult['token'];
+        } else return $this->loginResult;
     }
 }

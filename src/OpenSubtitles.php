@@ -2,6 +2,8 @@
 
 namespace Sosat1101\Opensubtitles;
 
+use Exception;
+
 abstract class OpenSubtitles
 {
     protected mixed $ch;
@@ -9,14 +11,17 @@ abstract class OpenSubtitles
 
     abstract public function initCurl($url);
 
-    public function getResponse(): array|string
+    /**
+     * @throws Exception
+     */
+    public function getResponse(): array|string|Exception
     {
         $result = curl_exec($this->ch);
         if (curl_exec($this->ch) === false) {
-            return 'Curl error: ' . curl_error($this->ch);
+            throw  new Exception(json_encode("curl False:".curl_error($this->ch)));
         }
         if (200 !== curl_getinfo($this->ch, CURLINFO_HTTP_CODE)) {
-            return 'Response ERROR: httpCode:' . curl_getinfo($this->ch, CURLINFO_HTTP_CODE) . "Curl Info:" . curl_getinfo($this->ch);
+            throw new Exception("OpenSubtitles error with response: ".json_encode($result));
         }
         curl_close($this->ch);
         return $this->toArray($result);

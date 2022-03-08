@@ -2,10 +2,12 @@
 
 namespace Sosat1101\Opensubtitles;
 
+use Exception;
+
 class SearchOpenSubtitles extends OpenSubtitles
 {
     const URL = 'https://api.opensubtitles.com/api/v1/subtitles';
-    public array $searchResult;
+    public array|string $searchResult;
 
     private array $defaultParameters = [
         'ai_translated' => '',      // string    exclude, include (default: exclude)
@@ -63,7 +65,13 @@ class SearchOpenSubtitles extends OpenSubtitles
 
     public function getResult()
     {
-        $this->searchResult = $this->getResponse();
+        try {
+            $this->searchResult = $this->getResponse();
+        } catch (Exception $e) {
+            $this->searchResult = $e->getMessage();
+            return $this->searchResult;
+        }
         return $this->searchResult;
     }
+
 }

@@ -2,6 +2,8 @@
 
 namespace Sosat1101\Opensubtitles;
 
+use Exception;
+
 class DownloadOpenSubtitles extends OpenSubtitles
 {
     private array $defaultParameters = [
@@ -51,13 +53,20 @@ class DownloadOpenSubtitles extends OpenSubtitles
 
     public function getResult(): array|string
     {
-        $this->downloadResult = $this->getResponse();
+        try {
+            $this->downloadResult = $this->getResponse();
+        } catch (Exception $e) {
+            $this->downloadResult = $e->getMessage();
+            return $this->downloadResult;
+        }
         return $this->downloadResult;
     }
 
     public function getLink()
     {
-        return $this->downloadResult['link'];
+        if (is_array($this->downloadResult)) {
+            return $this->downloadResult['link'];
+        } else return $this->downloadResult;
     }
 
     /**
