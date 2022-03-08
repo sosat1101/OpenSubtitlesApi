@@ -1,9 +1,8 @@
 {
     "name": "sosat1101/opensubtitles",
-    "description": "Login, search, Download with buffer",
+    "description": "Login, Search, Download",
     "type": "library",
     "license": "MIT",
-    "keywords": ["opensubtitles"],
     "autoload": {
         "psr-4": {
             "Sosat1101\\Opensubtitles\\": "src/"
@@ -15,8 +14,6 @@
             "email": "air911.q@gmail.com"
         }
     ],
-    "require": {
-        "ext-curl": "*",
-        "symfony/var-dumper": "^6.0"
-    }
+    "minimum-stability": "dev",
+    "require": {}
 }
