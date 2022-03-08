@@ -1,6 +1,6 @@
 <?php
 
-namespace sosat1101\openSubtitles;
+namespace sosat1101\opensubtitles;
 interface Subtitles
 {
     public function search(string $name, string $language = "en"): array;

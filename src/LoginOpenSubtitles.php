@@ -1,6 +1,6 @@
 <?php
 
-namespace sosat1101\openSubtitles;
+namespace sosat1101\opensubtitles;
 
 class LoginOpenSubtitles extends OpenSubtitles
 {
