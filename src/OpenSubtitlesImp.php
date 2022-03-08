@@ -1,6 +1,6 @@
 <?php
 
-namespace sosat1101\opensubtitles;
+namespace Sosat1101\Opensubtitles;
 
 use Exception;
 

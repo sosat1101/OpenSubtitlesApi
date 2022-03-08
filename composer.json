@@ -1,11 +1,11 @@
 {
     "name": "sosat1101/opensubtitles",
-    "description": "Login, Search, Download",
+    "description": "login, search, download with buffer",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "sosat1101\\opensubtitles\\": "src/"
+            "Sosat1101\\Opensubtitles\\": "src/"
         }
     },
     "authors": [
