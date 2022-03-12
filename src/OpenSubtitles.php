@@ -7,7 +7,7 @@ use Exception;
 abstract class OpenSubtitles
 {
     protected mixed $ch;
-    const ApiKey = '';
+    const ApiKey = 'bCZDNxfGMhcVBtr5fAo7sqj9nmasEHLi';
 
     abstract public function initCurl($url);
 

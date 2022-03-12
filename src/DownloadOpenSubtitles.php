@@ -26,7 +26,7 @@ class DownloadOpenSubtitles extends OpenSubtitles
             if (array_key_exists($key, $this->defaultParameters)) {
                 $this->defaultParameters[$key] = $value;
             } else {
-                return "参数初始化错误";
+                throw new Exception("下载参数初始化错误");
             }
         }
     }
@@ -76,12 +76,15 @@ class DownloadOpenSubtitles extends OpenSubtitles
     {
         $pathInfo = pathinfo($this->getLink());
         $basename = $pathInfo['basename'];
-        header("Content-Type: text/plain");
-        header("Content-Disposition: attachment; filename=$basename");
-        header("Content-Transfer-Encoding: binary");
+
         // 获取Resource
         $resource = fopen($this->getLink(), 'rb');
+
         if ($resource) {
+            http_response_code(200);
+            header("Content-Type: text/plain");
+            header("Content-Disposition: attachment; filename=$basename");
+            header("Content-Transfer-Encoding: binary");
             // 开启一个大小为4096 bit的缓冲区
             ob_start(function ($chunk) {
                 return $chunk;
@@ -100,6 +103,7 @@ class DownloadOpenSubtitles extends OpenSubtitles
             // 关闭 output_buffer
             ob_end_clean();
         } else {
+            http_response_code(500);
             throw new Exception('无法获取当前URL资源');
         }
     }
